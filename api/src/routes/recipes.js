@@ -28,36 +28,31 @@ const { Recipe, Diet } = require("../db");
 //   }
 // });
 
+//*name
+
 router.get("/", async (req, res, next) => {
   const { name } = req.query;
   const allRecipes = await getAllRecipes(); //100 recetas traidas de la base de datos y la api
 
- try {
-   
-  if (name) {
-    const recipesName = await axios.get(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`
-    );
-    const recipesNameFilter = await recipesName.data.results.filter((e) =>
-      e.title.toLowerCase().includes(name.toLowerCase())
-    );
+  try {
+    if (name) {
+      const recipesName = await axios.get(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true`
+      );
+      const recipesNameFilter = await recipesName.data.results.filter((e) =>
+        e.title.toLowerCase().includes(name.toLowerCase())
+      );
 
-    recipesNameFilter.length
-      ? res.status(200).send(recipesNameFilter)
-      : res.status(404).send("recipe not found");
-
-  } else {
-    res.status(200).send(allRecipes);
+      recipesNameFilter.length
+        ? res.status(200).send(recipesNameFilter)
+        : res.status(404).send("recipe not found");
+    } else {
+      res.status(200).send(allRecipes);
+    }
+  } catch (error) {
+    next(error);
   }
-
- } catch (error) {
-   next(error)
- } 
 });
-
-
-
-
 
 router.get("/:id", async (req, res, next) => {
   const { id } = req.params;
