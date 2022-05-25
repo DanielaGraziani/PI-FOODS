@@ -11,15 +11,14 @@ const getDataFromApi = async () => {
   const apiMapResult = await apiAllData.data.results.map((api) => {
     return {
       id: api.id, 
-      title: api.title, // *
+      title: api.title,
       summary: api.summary, 
-      spoonacularScore: api.spoonacularScore,
       healthScore: api.healthScore,
       steps: api.analyzedInstructions,
-      image: api.image, //*
-      dishTypes: api.dishTypes.map((dishtypes) => { //*
-        return { name: dishtypes };
-      }), //me retona un array de un objetos con la propiedad name y los valores mapeados
+      image: api.image, 
+      dishTypes: api.dishTypes.map((dishtypes) => { 
+      return { name: dishtypes };
+       }),  //me retona un array de un objetos con la propiedad name y los valores mapeados
       diets: api.diets.map((diet) => {
         return { name: diet }; 
       }), //me retona un array de objetos con la propiedad name y los valores mapeados
