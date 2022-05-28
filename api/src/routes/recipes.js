@@ -22,7 +22,7 @@ router.get("/", async (req, res, next) => {
     } else {
       res.status(200).json(allRecipes); // si no se ingresa nombre por defecto se muestra la lista completa de recetas
     }
-    console.log(name);
+  
   } catch (error) {
     next(error);
   }

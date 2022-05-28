@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "./Card";
+import Order from "./Order";
+import Filter from "./Filter";
+import Pagination from "./Pagination";
 // import s from "../styles/Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
-import { getAllRecipesHome, orderAlphabetic, orderScore } from "../actions";
+import { getAllRecipesHome } from "../actions";
 import { Link } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.recipesHome);
 
-  const [orderAlpha, setOrderAlphabetic] = useState("");
-  const [orderScor, setOrderScore] = useState("");
+  const [currentPage, setCurrentPage] = useState(1); //pagina actual
+  const [recipePerPage] = useState(9); //recetas por pagina
+  const indexOfLastItem = currentPage * recipePerPage; // posicion de la ultima receta ||
+  const indexOfFirstItem = indexOfLastItem - recipePerPage;
+
+  const currentRecipes = allRecipes.slice(indexOfFirstItem, indexOfLastItem);
+
+  const paginate = (pageNumber) => {
+    // e.preventDefault()
+    setCurrentPage(pageNumber);
+  };
 
   useEffect(() => {
     dispatch(getAllRecipesHome());
@@ -22,24 +34,11 @@ export default function Home() {
   const handleClick = (e) => {
     e.preventDefault();
     dispatch(getAllRecipesHome());
-  };
-
-  const handleSelectByName = (e) => {
-    e.preventDefault();
-    dispatch(orderAlphabetic(e.target.value));
-    setOrderAlphabetic("Order" + e.target.value);
-  };
-
-  const handleSelectByScore = (e) => {
-    e.preventDefault();
-    dispatch(orderScore(e.target.value));
-    setOrderScore("Order" + e.target.value);
+    setCurrentPage(1);
   };
 
   return (
-    <>
-      <SearchBar />
-
+    <div>
       <Link to={"/recipe"}>
         <button>Create your own recipe!</button>
       </Link>
@@ -54,32 +53,20 @@ export default function Home() {
         </button>
       </div>
 
+      <SearchBar />
+      <Order setCurrentPage={setCurrentPage} />
+      <Filter setCurrentPage={setCurrentPage}/>
+
+      <Pagination
+        allRecipes={allRecipes.length}
+        recipePerPage={recipePerPage}
+        paginate={paginate}
+      />
 
       <div>
-        <h3>Order By Name</h3>
-        <select
-          /* className={s.sOrder} */ onChange={(e) => handleSelectByName(e)}
-        >
-          <option value="default">All</option>
-          <option value="A-Z"> A-Z</option>
-          <option value="Z-A">Z-A</option>
-        </select>
-
-        <h3>Order By Score</h3>
-        <select
-          /* className={s.sOrder} */ onChange={(e) => handleSelectByScore(e)}
-        >
-          <option value="All">All</option>
-          <option value="Asc"> High </option>
-          <option value="Desc"> Low </option>
-        </select>
-      </div>
-
-
-      <div>
-        {allRecipes.length > 0 ? (
-          allRecipes &&
-          allRecipes.map((el) => {
+        { currentRecipes.length > 0 ? (
+          currentRecipes &&
+          currentRecipes.map((el) => {
             return (
               <Card
                 key={el.id}
@@ -94,6 +81,6 @@ export default function Home() {
           <p>Loading...</p>
         )}
       </div>
-    </>
+    </div>
   );
 }
