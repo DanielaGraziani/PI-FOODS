@@ -11,6 +11,7 @@ import {
   POST_RECIPE,
 } from "../actions/types.js";
 
+
 const initialState = {
   recipesHome: [],
   recipesHomeCopy: [],
@@ -50,64 +51,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
       };
 
-    //^FORMATO COMUN
-
-    // case ORDER_ALPHABETIC_ASC:
-    //   let orderRecipes =
-    //     action.payload === "A-Z"
-    //     ?
-    //           state.recipesHome.sort((a, b) => {
-    //             if(a.title.toLowerCase() > b.title.toLowerCase()) return 1
-    //             if (b.title.toLowerCase() > a.title.toLowerCase()) return -1
-    //             return 0
-    //         })
-
-    //       : state.recipesHome.sort((a, b) => {
-    //           if(a.title.toLowerCase() < b.title.toLowerCase()) return 1
-    //           if(b.title.toLowerCase() < a.title.toLowerCase()) return -1
-    //           return 0
-
-    //         })
-
-    //   return {
-    //     ...state,
-    //     recipesHome:
-    //       action.payload === "default" ? state.recipesHome : orderRecipes,
-    //   };
-
-    //^FORMATO DE PRUEBA
-
-    // case ORDER_ALPHABETIC_ASC:
-    //   let orderRecipes = action.payload === 'A-Z'
-    //   if(orderRecipes){
-    //     state.recipesHome.sort((a, b)=>{
-    //       if(a.title.toLowerCase() > b.title.toLowerCase()) return 1
-    //       if(b.title.toLowerCase() > a.title.toLowerCase()) return -1
-    //       return 0
-    //     })
-    //   }
-
-    //   return {
-    //     ...state,
-    //     recipesHome: action.payload === "All" ? state.recipesHome : orderRecipes
-    //   }
-
-    //   case ORDER_ALPHABETIC_DES:
-    //   let orderRecipesDes = action.payload === 'Z-A'
-    //   if(orderRecipes){
-    //     state.recipesHome.sort((a, b)=>{
-    //       if(a.title.toLowerCase() < b.title.toLowerCase()) return 1
-    //       if(b.title.toLowerCase() < a.title.toLowerCase()) return -1
-    //       return 0
-    //     })
-    //   }
-
-    //   return {
-    //     ...state,
-    //     recipesHome: action.payload === "All" ? state.recipesHome : orderRecipesDes
-    //   }
-
-    /* modificar eventualmente los recipes recipesHome * recipesHomeCopy */
+    
 
     //^ ORDEEER A-Z
 
@@ -188,15 +132,22 @@ const rootReducer = (state = initialState, action) => {
     //^FILTRADOOOOOOOOOOOOOOOOOOOOOOOOO
 
     case FILTER_RECIPES_BY_DIET:
-      const recipes = state.recipesHomeCopy;
-      const dietsdb =
+
+
+      const recipes = state.recipesHomeCopy
+
+      const vegetarian= recipes.map((v)=>{
+        if(v.vegetarian && !v.diets.includes('vegetarian')) v.diets.push('vegetarian')
+      })
+      
+      const result =
         action.payload === "default"
           ? recipes
           : recipes.filter((el) => {
               let db = el.diets.map((d) => d.name);
-              // let api= el.diets.map(d=> d)
+               let api= el.diets.map(d=> d)
               if (
-                db.includes(action.payload) /* api.includes(action.payload) */
+                db.includes(action.payload) || api.includes(action.payload) || vegetarian.includes(action.payload)
               ) {
                 return el;
               }
@@ -206,46 +157,29 @@ const rootReducer = (state = initialState, action) => {
       //en recipes guardo todas las recetas
       //filtro cada una de las recetas, y guardo en dos variables las coincidencia con las dietas las que tienen un name (db )y las no
 
-      const dietsApi =
-        action.payload === "default"
-          ? recipes
-          : recipes.filter((el) => {
-              let diet = el.diets.map((d) => d);
-              if (diet.includes(action.payload)) {
-                return el;
-              }
+      // const dietsApi =
+      //   action.payload === "default"
+      //     ? recipes
+      //     : recipes.filter((el) => {
+      //         let diet = el.diets.map((d) => d);
+      //         if (diet.includes(action.payload)) {
+      //           return el;
+      //         }
               
-            });
+      //       });
 
-      let dietsFiltered = dietsApi.concat(dietsdb);
+      // let dietsFiltered = dietsApi.concat(dietsdb);
 
-      const dataArr = new Set(dietsFiltered);
+      // const dataArr = new Set(dietsFiltered);
 
-      let result = [...dataArr];
+      // let result = [...dataArr];
 
       return {
         ...state,
         recipesHome: result,
       };
 
-    // case FILTER_RECIPES_BY_DIET:
-    //   const allRecipes = state.recipesHomeCopy
-
-    //   let apiDiets = action.payload === 'default' ? allRecipes : allRecipes.filter((el)=> el.diets.includes(action.payload))
-
-    //   // let dietsDb = allRecipes.filter
-
-    //   // const recipeDB = allRecipes.filter((el) => el.createInDB);
-    //   // const filterRecipeDB = recipeDB.filter((el) => el.diets.name === action.payload )
-
-    //   let dbDiets= allRecipes.filter((el)=> el.createInDB && el.createInDB.includes(action.payload))
-
-    //   let dietsFiltered= apiDiets.concat(dbDiets)
-
-    // return{
-    //   ...state,
-    //   recipesHome: dietsFiltered
-    // }
+   
 
     default:
       return state;

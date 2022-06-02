@@ -1,0 +1,224 @@
+.container{
+  border: 12px solid rgb(169, 149, 202)
+  /* border: 12px solid #4A148C; */
+  /* border: 12px solid black; */
+
+}
+
+/* body{
+  background-color: white;
+} */
+
+.title{
+  margin-top: 40px;
+  font-size: 2rem;  
+  color: #4A148C;
+  text-align: center;
+  font-weight: bold;  
+}
+
+
+
+.img{
+  margin-top: 80px;
+  width:500px;
+  border: 5px solid rgb(149, 117, 205);
+  margin-right: 600px;
+}
+
+
+.upContainer{
+  display: flex;
+  justify-items:center;
+  margin-top: 50px;
+  margin-left: 250px;
+  margin-bottom: 30px;
+}
+
+.scoreContainer{
+  background-color: white;
+  border-radius: 10px;
+  width: 100px;
+  height: 60px;
+  margin-left: 520px;
+  border: 2px solid rgb(149, 117, 205);
+  color: #4A148C;
+  
+  
+}
+
+.score{
+  margin: 5px;
+
+}
+
+
+.dish{
+  background-color: white;
+  border-radius: 10px;
+  margin-left: 100px;
+  width: 100px;
+  min-height: 60px;
+  /* height: 60px; */
+  border: 2px solid rgb(149, 117, 205);
+  color: #4A148C; 
+}
+
+.dishTitle{
+  margin: 5px;
+  text-transform: capitalize;
+}
+
+.dishT{
+  text-transform: capitalize;
+}
+
+.type{
+margin-top: -330px;
+margin-left: 550px;
+}
+
+.typeItems{
+  text-transform: capitalize;
+  text-align: center;
+  color: #4A148C;
+  letter-spacing: 1.5px;
+}
+
+.vegetarian{
+  margin-top: 5px;
+  letter-spacing: 1.5px;
+  justify-content: center;
+
+}
+
+
+.typeTitle{
+  color: #4A148C;
+  margin-bottom: 20px;
+
+}
+
+.logoVeggie{
+margin-left: 550px;
+margin-top: -80px;
+}
+
+.summaryContainer{
+  /* margin-top: 10px; */
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+ 
+
+}
+
+.summaryText{
+  text-align: justify;
+  color: #212121;
+}
+
+.summaryTitle{
+  text-decoration:underline;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #4A148C;
+}
+
+.brocco{
+  margin-top: -250px;
+  margin-right: 900px;
+  position: relative;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.pencil{
+  margin-top: -350px;
+  margin-left: 1000px;
+  position: relative;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.stepContainer{
+  margin-top: -80px;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  text-align: justify;
+  justify-content:center;
+
+}
+
+.stepTitle{
+ margin-bottom: 10px;
+ text-decoration: underline;
+ color: #4A148C;
+ font-weight: bold;
+ 
+ 
+}
+
+
+.stepItem{
+  list-style:none;
+  margin-bottom: 20px;
+  color: #212121;
+
+  
+}
+
+.button{
+  margin-left: 40px;
+  /* margin-top: 10px; */
+  margin-bottom: 40px;
+  padding: 1em 3em;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+} 
+
+.button:hover {
+  background-color: #9061ffff;
+  box-shadow: 0px 15px 20px rgb(149, 117, 205);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.button:active {
+  transform: translateY(-1px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.spinnerContainer{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  }

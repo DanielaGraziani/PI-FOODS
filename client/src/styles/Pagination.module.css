@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 8vh;
+
   }
   
   .pagination {
@@ -18,7 +19,7 @@
   }
   
   .number {
-    background-color: #DEB6AB;
+    background-color: #F4511E;
     /* background-color: rgb(243, 235, 235); */
     color: white;
     display: flex;
@@ -27,16 +28,16 @@
     margin: 0 2px 0 2px;
     cursor: pointer;
     width: 2vw;
-    border-radius: 2px;
+    border-radius: 10px;
     height: 5vh;
-    color: #000000;
+    color: white;
     font-size: large;
     font-weight: bold;
     padding: 7px
   }
   
   .number:hover{
-      background-color: #AC7D88 ;
+      background-color: rgb(255, 171, 145) ;
       /* background-color: #b1b1b13d; */
       color: white;
       

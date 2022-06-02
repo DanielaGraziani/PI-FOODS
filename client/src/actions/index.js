@@ -13,6 +13,7 @@ import {
   POST_RECIPE
 } from "./types";
 
+
 export const getAllRecipesHome = () => (dispatch) => {
   return fetch("http://localhost:3001/recipes")
     .then((response) => response.json())
@@ -34,7 +35,7 @@ export const getRecipeByID = (id) => (dispatch) => {
         payload: json,
       });
     })
-    .catch((error) => console.error(error));
+    .catch((error) => {alert('ID not found')});
 };
 
 export const getRecipeByName = (name) => (dispatch) => {
@@ -46,7 +47,8 @@ export const getRecipeByName = (name) => (dispatch) => {
         payload: json,
       });
     })
-    .catch((error) => console.error(error));
+    .catch((error) => { 
+      alert('This recipes is not found')});
 };
 
 export function getTypesOfDiets() {

@@ -1,6 +1,7 @@
 import React from "react";
 import {filterRecipesByDiet} from '../actions'
 import { useDispatch } from "react-redux";
+import s from '../styles/Orders.module.css'
 
 export default function Filter({setCurrentPage}) {
   const dispatch = useDispatch();
@@ -13,8 +14,8 @@ export default function Filter({setCurrentPage}) {
  
 
   return (
-    <div className="filter">
-      <select onChange={(e) => handleDiets(e)}>
+    <div className={s.filterContainer}>
+      <select className={s.sFilter} onChange={(e) => handleDiets(e)}>
         <option value="default"> All Diets</option>
         <option value="gluten free"> Gluten Free</option>
         <option value="dairy free"> Dairy Free</option>

@@ -3,12 +3,14 @@ import Card from "./Card";
 import Order from "./Order";
 import Filter from "./Filter";
 import Pagination from "./Pagination";
-// import s from "../styles/Home.module.css";
+import s from "../styles/Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import { getAllRecipesHome } from "../actions";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+import Loader from "./Loader";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -31,15 +33,15 @@ export default function Home() {
     console.log("Montaje del componente");
   }, [dispatch]);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    dispatch(getAllRecipesHome());
-    setCurrentPage(1);
-  };
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  //   dispatch(getAllRecipesHome());
+  //   setCurrentPage(1);
+  // };
 
   return (
     <div>
-      <Link to={"/recipe"}>
+      {/*  <Link to={"/recipe"}>
         <button>Create your own recipe!</button>
       </Link>
 
@@ -51,36 +53,40 @@ export default function Home() {
         >
           Reset
         </button>
-      </div>
+      </div> */}
 
-      <SearchBar />
+      <Navbar setCurrentPage={setCurrentPage} />
+      <SearchBar setCurrentPage={setCurrentPage} />
       <Order setCurrentPage={setCurrentPage} />
-      <Filter setCurrentPage={setCurrentPage}/>
+      <Filter setCurrentPage={setCurrentPage} />
 
-      <Pagination
-        allRecipes={allRecipes.length}
-        recipePerPage={recipePerPage}
-        paginate={paginate}
-      />
-
-      <div>
-        { currentRecipes.length > 0 ? (
+      <div className={s.cardsContainer}>
+        {currentRecipes.length > 0 ? (
           currentRecipes &&
           currentRecipes.map((el) => {
             return (
-              <Card
-                key={el.id}
-                id={el.id}
-                title={el.title}
-                diets={el.diets}
-                image={el.image}
-              />
+              <Link key={el.id}to={`/recipes/${el.id}`} className={s.link}>
+                <Card
+                  key={el.id}
+                  // id={el.id}
+                  title={el.title}
+                  diets={el.diets}
+                  image={el.image}
+                />
+              </Link>
             );
           })
         ) : (
-          <p>Loading...</p>
-        )}
+          <div className={s.spinnerContainer}>
+            <Loader/>
+          </div>
+        )}   
       </div>
+        <Pagination
+          allRecipes={allRecipes.length}
+          recipePerPage={recipePerPage}
+          paginate={paginate}
+        />
     </div>
   );
 }

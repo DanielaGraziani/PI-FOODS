@@ -1,28 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import defaultImg from '../utils/ratta.jpg'
+import s from '../styles/Card.module.css'
 
 export default function Card({ title, diets, image, id }) {
   return (
-    <div>
-      <div>
-        <div>
-          <h3>{title.toUpperCase()}</h3>
+    <div className={s.card}>
+      
+       
+        <section className={s.cardImg}>
+          {image ? (<img src={image} className={s.cardImg} alt='not found'/>) : (<img src={defaultImg} className={s.cardImg} width='300px' alt="default"/>)}
+        </section>
+
+        <div className={s.title}>
+          <h4>{title.toUpperCase()}</h4>
         </div>
-        <div>
-          {/* <img src={image} alt="not found" /> */}
-          {image ? (<img src={image} alt='not found'/>) : (<img src={defaultImg} width='300px' alt="default"/>)}
-        </div>
-        <div>
+
+        <div className={s.diets}>
           {diets.map((e, index) => (
-            <h5 key={index}>{e.name ? e.name.toUpperCase() : e.toUpperCase()}</h5>
+            <p key={index}>{e.name ? e.name.toUpperCase() : e.toUpperCase()}</p>
           ))}
         </div>
 
-          <Link key={id} to={`/recipes/${id}`}>
-            See more
-          </Link>
       </div>
-    </div>
+
   );
 }
+
+
+
+
+
+      // {/* <div className={s.btnContainer}>
+      //     <Link to={`/recipes/${id}`}>
+      //       {/* <button className={s.btn}>See more</button> */}
+      //     </Link>
+      // </div> */}

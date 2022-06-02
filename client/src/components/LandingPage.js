@@ -1,17 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import s from '../styles/Landing.module.css'
 
 export default function LandingPage() {
   return (
-    <div>
-        <h1>Foods App</h1>
-        <div>
-            <p>Welcome</p>
+    <div className={s.landingContainer}>
+        <h1 className={s.landingTitle}>Recipe's Ideas</h1>
+        <div className={s.text}>
+            <p>Welcome!</p>
         </div>
 
+    <div className={s.buttonContainer}>
     <Link to= '/recipes'>
-    <button>Enter</button>
+    <button className={s.button}>Enter</button>
     </Link>
+    </div>
     </div>
   )
 }

@@ -4,6 +4,9 @@ import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 import Details from './components/Details';
 import CreateForm from './components/CreateForm';
+import Error from './components/Error'
+// import CreateRecipe from './components/CreateRecipe';
+
 
 function App() {
   return (
@@ -14,6 +17,8 @@ function App() {
     <Route path="/recipes" element={<Home/>}/>
     <Route path="/recipes/:id" element={<Details/>}/>
     <Route path="/recipe" element={<CreateForm/>}/>
+    <Route path="*" element={<Error/>}/>
+
   </Routes>
     </div>
     </BrowserRouter>

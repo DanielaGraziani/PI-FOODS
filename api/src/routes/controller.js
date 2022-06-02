@@ -17,9 +17,10 @@ const getDataFromApi = async () => {
       healthScore: api.healthScore,
       steps: api.analyzedInstructions,
       image: api.image, 
-      dishTypes: api.dishTypes.map((dishtypes) => { 
-      return { name: dishtypes };
-       }),
+      // dishTypes: api.dishTypes.map((dishtypes) => { 
+      // return { name: dishtypes };
+      //  }),
+      dishTypes: api.dishTypes,
       diets: api.diets  //me retona un array de un objetos con la propiedad name y los valores mapeados
       // diets: api.diets.map((diet) => {
       //   return { name: diet }; 

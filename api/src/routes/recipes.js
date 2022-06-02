@@ -82,6 +82,7 @@ router.get("/:id", async (req, res, next) => {
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
       );
       return res.json({
+        vegetarian: data.vegetarian,
         image: data.image,
         title: data.title,
         summary: data.summary,
