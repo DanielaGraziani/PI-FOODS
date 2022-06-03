@@ -9,6 +9,7 @@ import {
   FILTER_RECIPES_BY_DIET,
   GET_TYPES_OF_DIET,
   POST_RECIPE,
+
 } from "../actions/types.js";
 
 
@@ -51,9 +52,15 @@ const rootReducer = (state = initialState, action) => {
         ...state,
       };
 
-    
+  //   //!Pruebas
 
-    //^ ORDEEER A-Z
+
+  //  //!
+
+
+
+
+    // ORDEEER A-Z
 
     case ORDER_ALPHABETIC_ASC:
       let ascAlphabet = [...state.recipesHome];
@@ -61,7 +68,7 @@ const rootReducer = (state = initialState, action) => {
       let orderAsc = ascAlphabet.sort((a, b) => {
         if (a.title.toLowerCase() < b.title.toLowerCase()) {
           return -1;
-        } else if (a.title.toLowerCase() > b.title.toLowerCase()) {
+        } else if (b.title.toLowerCase() > a.title.toLowerCase()) {
           return 1;
         } else {
           return 0;
@@ -93,8 +100,7 @@ const rootReducer = (state = initialState, action) => {
 
     case ORDER_BY_HIGH_SCORE:
       let orderScore = state.recipesHome.slice().sort((a, b) => {
-        // const high = a.healthScore
-        // const low = b.healthScore
+        
 
         if (b.healthScore < a.healthScore) {
           return -1;
@@ -128,6 +134,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         recipesHome: LowOrderScore,
       };
+
 
     //^FILTRADOOOOOOOOOOOOOOOOOOOOOOOOO
 

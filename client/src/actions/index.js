@@ -10,7 +10,8 @@ import {
   ORDER_BY_LOW_SCORE,
   FILTER_RECIPES_BY_DIET,
   GET_TYPES_OF_DIET,
-  POST_RECIPE
+  POST_RECIPE,
+
 } from "./types";
 
 
@@ -112,4 +113,7 @@ export const filterRecipesByDiet = (payload) => {
     payload,
   };
 };
+
+
+
 

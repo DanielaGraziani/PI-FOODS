@@ -8,3 +8,5 @@
  export const GET_TYPES_OF_DIET= 'GET_TYPES_OF_DIET'
  export const FILTER_RECIPES_BY_DIET= 'FILTER_RECIPES_BY_DIET'
  export const POST_RECIPE= 'POST_RECIPE'
+
+

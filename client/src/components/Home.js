@@ -15,53 +15,40 @@ import Loader from "./Loader";
 export default function Home() {
   const dispatch = useDispatch();
   const allRecipes = useSelector((state) => state.recipesHome);
+  
+  // me traje el estado copia
+      // const FilterRecipes= useSelector((state)=> state.recipesHomeCopy)
+
 
   const [currentPage, setCurrentPage] = useState(1); //pagina actual
   const [recipePerPage] = useState(9); //recetas por pagina
   const indexOfLastItem = currentPage * recipePerPage; // posicion de la ultima receta ||
   const indexOfFirstItem = indexOfLastItem - recipePerPage;
 
-  const currentRecipes = allRecipes.slice(indexOfFirstItem, indexOfLastItem);
+  const currentRecipes = allRecipes?.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => {
-    // e.preventDefault()
+   
     setCurrentPage(pageNumber);
   };
 
   useEffect(() => {
     dispatch(getAllRecipesHome());
-    console.log("Montaje del componente");
   }, [dispatch]);
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   dispatch(getAllRecipesHome());
-  //   setCurrentPage(1);
-  // };
+  
 
   return (
     <div>
-      {/*  <Link to={"/recipe"}>
-        <button>Create your own recipe!</button>
-      </Link>
-
-      <div>
-        <button
-          onClick={(e) => {
-            handleClick(e);
-          }}
-        >
-          Reset
-        </button>
-      </div> */}
-
+      
       <Navbar setCurrentPage={setCurrentPage} />
       <SearchBar setCurrentPage={setCurrentPage} />
       <Order setCurrentPage={setCurrentPage} />
       <Filter setCurrentPage={setCurrentPage} />
 
       <div className={s.cardsContainer}>
-        {currentRecipes.length > 0 ? (
+
+        {currentRecipes.length > 0 ? ( 
           currentRecipes &&
           currentRecipes.map((el) => {
             return (
@@ -83,7 +70,7 @@ export default function Home() {
         )}   
       </div>
         <Pagination
-          allRecipes={allRecipes.length}
+          allRecipes={allRecipes.length} //cambie esto
           recipePerPage={recipePerPage}
           paginate={paginate}
         />

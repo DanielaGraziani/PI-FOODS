@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipeByID } from "../actions";
@@ -9,19 +9,23 @@ import s from "../styles/Details.module.css";
 import logoVeggie from "../utils/veggie.png";
 import brocco from "../utils/piece-of-broccoli.png";
 import pencil from "../utils/spatula-and-whisk-in-pot.png";
+import Empty from '../components/Empty'
 
 export default function Details() {
   const dispatch = useDispatch();
+  // const [isLoading, setIsLoading]= useState(true)
   const details = useSelector((state) => state.recipeID);
   const { id } = useParams();
 
   useEffect(() => {
+    // isLoading(true)
     dispatch(getRecipeByID(id));
-
-    //   return () => {
-    //     second
-    //   }
+    // isLoading(false)
   }, [dispatch, id]);
+
+  // if(!isLoading && details.length === 0){
+  //   return <Empty/>
+  // }
 
   return (
     <>
@@ -103,11 +107,11 @@ export default function Details() {
               </div>
 
               <img className={s.pencil} src={pencil} alt='spatula' />
-
               <Link to={"/recipes"}>
                 <button className={s.button}> Go Back </button>
               </Link>
             </div>
+
           )
 
           // ) :

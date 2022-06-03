@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { getRecipeByName } from "../actions";
 import s from "../styles/SearchBar.module.css";
 
+
 export default function SearchBar({ setCurrentPage }) {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
@@ -12,6 +13,10 @@ export default function SearchBar({ setCurrentPage }) {
     e.preventDefault();
     setInput(e.target.value);
   };
+
+
+  
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +30,8 @@ export default function SearchBar({ setCurrentPage }) {
     setCurrentPage(1);
   };
 
+
+
   return (
     <div>
       <form className={s.searchContainer} onSubmit={(e) => handleSubmit(e)}>
@@ -36,6 +43,7 @@ export default function SearchBar({ setCurrentPage }) {
         placeholder="Search recipe..."
         onChange={(e) => handleInputChange(e)}
       />
+     
       <button className={s.searchButton} type="submit">
       
       </button>
