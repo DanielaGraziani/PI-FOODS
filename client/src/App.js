@@ -2,10 +2,11 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
-import Details from './components/Details';
 import CreateForm from './components/CreateForm';
 import Error from './components/Error'
-// import CreateRecipe from './components/CreateRecipe';
+// import Prueba from '../src/components/Prueba'
+import Details from './components/Details';
+
 
 
 function App() {

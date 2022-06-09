@@ -4,7 +4,7 @@ const { Recipe, Diet } = require("../db"); //importo los modelos
 
 router.post("/", async (req, res, next) => {
   try {
-    let { title, summary, healthScore, steps, diets, createInDB } =
+    let { title, summary, healthScore, steps, diets} =
       req.body;
 
     let recipeCreate = await Recipe.create({
@@ -12,12 +12,12 @@ router.post("/", async (req, res, next) => {
       summary,
       healthScore,
       steps,
-      createInDB
     });
 
 
     for (let i = 0; i < diets.length; i++) {
-      let diet = await Diet.findOne({
+    //en lugar de utilizar findOne, usar findOrCreate 
+      let diet = await Diet.findOne({                
         where: { name: diets[i] },
       });
 

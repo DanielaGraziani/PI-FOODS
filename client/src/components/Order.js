@@ -17,24 +17,28 @@ const Order = ({ setCurrentPage }) => {
 	e.preventDefault();
     if (order === "A-Z") {
       dispatch(orderAlphabetic());
+    setCurrentPage(1)
     } else if (order === "Z-A") {
       dispatch(orderAlphabeticDesc());
+    setCurrentPage(1)
     } else if (order === "High Score") {
       dispatch(orderScore());
+    setCurrentPage(1)
     } else {
       dispatch(orderScoreLow());
+      setCurrentPage(1)
     }
-    setCurrentPage(1)
   };
+
   const orders = ["A-Z", "Z-A", "High Score", "Low Score"];
   
   const handleOrderChange = (e) => {
-    // setCurrentPage(1); //comportamiento extraño en el ordenamiento
     setOrder(e.target.value);
   };
 
   return (
     <form className={s.orderContainer} onSubmit={handleOrderSubmit}>
+      
       <select
         className={s.sOrder}
         value={order}

@@ -1,8 +1,8 @@
 import React from "react";
-import defaultImg from '../utils/ratta.jpg'
+import defaultImg from '../utils/image-not-found.png'
 import s from '../styles/Card.module.css'
 
-export default function Card({ title, diets, image, id }) {
+export default function Card({ title, diets, image}) {
   return (
     <div className={s.card}>
       

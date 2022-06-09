@@ -6,14 +6,8 @@ import s from '../styles/Orders.module.css'
 
 export default function Filter({setCurrentPage}) {
   const dispatch = useDispatch();
-  // const todasLasDietas = useSelector((state)=> state.diets)
-  // const [, /*orden*/ setOrden] = useState("");
-
-  // useEffect(()=>{
-  //   dispatch(getTypesOfDiets())
-  // }, [dispatch])
-
-
+ 
+  
   function handleDiets(e) {
     e.preventDefault()
     dispatch(filterRecipesByDiet(e.target.value));

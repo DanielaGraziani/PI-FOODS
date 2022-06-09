@@ -1,4 +1,4 @@
-  import axios from "axios";
+import axios from "axios";
 
 import {
   GET_ALL_RECIPES_HOME,
@@ -11,9 +11,9 @@ import {
   FILTER_RECIPES_BY_DIET,
   GET_TYPES_OF_DIET,
   POST_RECIPE,
-
+  DELETE_RECIPE,
+  RESET
 } from "./types";
-
 
 export const getAllRecipesHome = () => (dispatch) => {
   return fetch("http://localhost:3001/recipes")
@@ -36,7 +36,9 @@ export const getRecipeByID = (id) => (dispatch) => {
         payload: json,
       });
     })
-    .catch((error) => {alert('ID not found')});
+    .catch((error) => {
+      alert("ID not found");
+    });
 };
 
 export const getRecipeByName = (name) => (dispatch) => {
@@ -48,8 +50,9 @@ export const getRecipeByName = (name) => (dispatch) => {
         payload: json,
       });
     })
-    .catch((error) => { 
-      alert('This recipes is not found')});
+    .catch((error) => {
+      alert("This recipes is not found");
+    });
 };
 
 export function getTypesOfDiets() {
@@ -80,8 +83,6 @@ export function postRecipe(payload) {
   };
 }
 
-
-
 export const orderAlphabetic = () => {
   return {
     type: ORDER_ALPHABETIC_ASC,
@@ -107,13 +108,24 @@ export const orderScoreLow = () => {
 };
 
 export const filterRecipesByDiet = (payload) => {
-  console.log(payload)
+  console.log(payload);
   return {
     type: FILTER_RECIPES_BY_DIET,
     payload,
   };
 };
 
+export const deleteRecipe = (id) => {
+  return async function (dispatch) {
+    await axios.delete(`http://localhost:3001/recipes/${id}`);
+    return dispatch({
+      type: DELETE_RECIPE,
+    });
+  };
+};
 
-
-
+export const reset=()=>{
+  return (dispatch)=>{
+    dispatch({type: RESET})
+  }
+}

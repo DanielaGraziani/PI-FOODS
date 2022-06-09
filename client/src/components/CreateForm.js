@@ -6,7 +6,6 @@ import { postRecipe, getTypesOfDiets } from "../actions";
 import { Link } from "react-router-dom";
 import s from "../styles/CreateForm.module.css";
 
-
 const validateForm = (form) => {
   let errors = {};
   let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
@@ -43,10 +42,6 @@ const validateForm = (form) => {
     errors.steps = "This fild is required";
   }
 
-  // if (!form.diets) {
-  //   errors.diets = "This fild is required";
-  // }
-
   if (!form.diets.length) {
     errors.diet = "This field is required";
   }
@@ -58,7 +53,7 @@ export default function CreateForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const diets = useSelector((state) => state.diets);
-  
+
   const [errorsForm, setErrorsForm] = useState({
     diets: "this fild is required",
   });
@@ -103,6 +98,12 @@ export default function CreateForm() {
     );
   };
 
+  // const handleAddDiet=(e)=>{
+  //   setForm({
+  //     ..
+  //   })
+  // }
+
   const handleDelete = (e) => {
     setForm({
       ...form,
@@ -135,12 +136,11 @@ export default function CreateForm() {
       });
     }
   };
+  console.log(form.diets);
 
   return (
     <div className={s.container}>
-  
-      <form  className={s.form}onSubmit={(e) => handleSubmit(e)}>
-        
+      <form className={s.form} onSubmit={(e) => handleSubmit(e)}>
         <div>
           <p className={s.title}>CREATE YOUR OWN RECIPE</p>
         </div>
@@ -151,25 +151,31 @@ export default function CreateForm() {
             type="text"
             name="title"
             value={form.title}
-           className={s.input}
-            // onBlur={handleBlur}
+            className={s.input}
             onChange={(e) => handleChange(e)}
           />
 
-          {errorsForm.title ? <h6 className={s.error}>{errorsForm.title}</h6> : false}
+          {errorsForm.title ? (
+            <h6 className={s.error}>{errorsForm.title}</h6>
+          ) : (
+            false
+          )}
         </div>
 
         <div>
           <p className={s.pTitle}>Summary *</p>
           <input
-           className={s.input}
+            className={s.input}
             type="text"
             name="summary"
             value={form.summary}
-            // onBlur={handleBlur}
             onChange={(e) => handleChange(e)}
           />
-          {errorsForm.summary ? <h6 className={s.error}>{errorsForm.summary}</h6> : false}
+          {errorsForm.summary ? (
+            <h6 className={s.error}>{errorsForm.summary}</h6>
+          ) : (
+            false
+          )}
         </div>
 
         <div>
@@ -179,13 +185,26 @@ export default function CreateForm() {
             name="healthScore"
             min={1}
             max={100}
-           className={s.input}
+            className={s.input}
             value={form.healthScore}
-            // className={s.input}
             onChange={(e) => handleChange(e)}
           />
-          {errorsForm.healthScore ? <h6 className={s.error}>{errorsForm.healthScore}</h6> : false}
+          {errorsForm.healthScore ? (
+            <h6 className={s.error}>{errorsForm.healthScore}</h6>
+          ) : (
+            false
+          )}
         </div>
+
+        {/* <div>
+          <input
+            type="text"
+            name='diets'
+            placeholder="insert your own diet"
+            // value={form.diets}
+            onChange={(e) => handleSelectRecipes(e)}
+            />
+        </div> */}
 
         <div>
           <p className={s.pTitle}>Instructions *</p>
@@ -195,19 +214,22 @@ export default function CreateForm() {
             value={form.steps}
             cols="30"
             rows="10"
-           className={s.inputText}
-
-            // onBlur={handleBlur}
+            className={s.inputText}
             onChange={(e) => handleChange(e)}
           />
 
-          {errorsForm.steps ? <h6 className={s.error}>{errorsForm.steps}</h6> : false}
+          {errorsForm.steps ? (
+            <h6 className={s.error}>{errorsForm.steps}</h6>
+          ) : (
+            false
+          )}
         </div>
 
         <div>
           <p className={s.pTitle}>Type of diets * </p>
 
-          <select className={s.sForm}
+          <select
+            className={s.sForm}
             onChange={(e) => handleSelectRecipes(e)}
             defaultValue="default"
           >
@@ -243,21 +265,21 @@ export default function CreateForm() {
         </div>
 
         <div>
-          <button className={s.buttonSend}
+          <button
+            className={s.buttonSend}
             type="submit"
             name="submit"
             disabled={Object.keys(errorsForm).length === 0 ? false : true}
-          >
-            SEND
+          >SEND
           </button>
         </div>
       </form>
-      
-            <div>
-      <Link to="/recipes">
-        <button className={s.button}>Go Back</button>
-      </Link>
-            </div>
+
+      <div>
+        <Link to="/recipes">
+          <button className={s.button}>Go Back</button>
+        </Link>
+      </div>
     </div>
   );
 }

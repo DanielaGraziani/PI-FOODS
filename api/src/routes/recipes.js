@@ -100,4 +100,18 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const recipeToDelete = await Recipe.findByPk(id);
+    if (recipeToDelete) {
+      await recipeToDelete.destroy();
+      return res.send("Recipe delete!");
+    }
+    res.status(404).send("Recipe not found.");
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+
 module.exports = router;

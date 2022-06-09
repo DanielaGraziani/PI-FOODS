@@ -17,18 +17,16 @@ export default function Home() {
   const allRecipes = useSelector((state) => state.recipesHome);
   
   // me traje el estado copia
-      // const FilterRecipes= useSelector((state)=> state.recipesHomeCopy)
+  // const FilterRecipes= useSelector((state)=> state.recipesHomeCopy)
 
 
   const [currentPage, setCurrentPage] = useState(1); //pagina actual
   const [recipePerPage] = useState(9); //recetas por pagina
   const indexOfLastItem = currentPage * recipePerPage; // posicion de la ultima receta ||
   const indexOfFirstItem = indexOfLastItem - recipePerPage;
-
   const currentRecipes = allRecipes?.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => {
-   
     setCurrentPage(pageNumber);
   };
 
@@ -58,7 +56,7 @@ export default function Home() {
                   // id={el.id}
                   title={el.title}
                   diets={el.diets}
-                  image={el.image}
+                  image={el.image }
                 />
               </Link>
             );

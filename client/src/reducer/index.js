@@ -9,7 +9,8 @@ import {
   FILTER_RECIPES_BY_DIET,
   GET_TYPES_OF_DIET,
   POST_RECIPE,
-
+  DELETE_RECIPE,
+  RESET,
 } from "../actions/types.js";
 
 
@@ -52,13 +53,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
       };
 
-  //   //!Pruebas
-
-
-  //  //!
-
-
-
 
     // ORDEEER A-Z
 
@@ -96,7 +90,7 @@ const rootReducer = (state = initialState, action) => {
         recipesHome: orderDesc,
       };
 
-    //^ORDEEER SCOOOOORE
+    //^ORDER SCOORE
 
     case ORDER_BY_HIGH_SCORE:
       let orderScore = state.recipesHome.slice().sort((a, b) => {
@@ -136,13 +130,13 @@ const rootReducer = (state = initialState, action) => {
       };
 
 
-    //^FILTRADOOOOOOOOOOOOOOOOOOOOOOOOO
+    //^FILTRADOOO
 
     case FILTER_RECIPES_BY_DIET:
 
+      const recipes = [...state.recipesHomeCopy]
 
-      const recipes = state.recipesHomeCopy
-
+   /* Adding the string 'vegetarian' to the diets array if the recipe is vegetarian. */
       const vegetarian= recipes.map((v)=>{
         if(v.vegetarian && !v.diets.includes('vegetarian')) v.diets.push('vegetarian')
       })
@@ -151,7 +145,7 @@ const rootReducer = (state = initialState, action) => {
         action.payload === "default"
           ? recipes
           : recipes.filter((el) => {
-              let db = el.diets.map((d) => d.name);
+               let db = el.diets.map((d) => d.name);
                let api= el.diets.map(d=> d)
               if (
                 db.includes(action.payload) || api.includes(action.payload) || vegetarian.includes(action.payload)
@@ -160,33 +154,22 @@ const rootReducer = (state = initialState, action) => {
               }
               
             });
-
-      //en recipes guardo todas las recetas
-      //filtro cada una de las recetas, y guardo en dos variables las coincidencia con las dietas las que tienen un name (db )y las no
-
-      // const dietsApi =
-      //   action.payload === "default"
-      //     ? recipes
-      //     : recipes.filter((el) => {
-      //         let diet = el.diets.map((d) => d);
-      //         if (diet.includes(action.payload)) {
-      //           return el;
-      //         }
-              
-      //       });
-
-      // let dietsFiltered = dietsApi.concat(dietsdb);
-
-      // const dataArr = new Set(dietsFiltered);
-
-      // let result = [...dataArr];
-
+      
       return {
         ...state,
         recipesHome: result,
       };
 
-   
+      case DELETE_RECIPE:
+        return {
+          ...state,
+        };
+
+      case RESET:
+        return{
+          ...state,
+          recipeID: []
+        }
 
     default:
       return state;
