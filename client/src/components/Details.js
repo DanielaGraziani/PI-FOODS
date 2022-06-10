@@ -54,12 +54,12 @@ export default function Details() {
               </div>
 
               <div className={s.type}>
-                <h3 className={s.typeTitle}>Type of Diet</h3>
+                {/* <h3 className={s.typeTitle}>Type of Diet</h3> */}
                 <h3 className={s.typeItems}>
-                  {details.diets && details.diets.map((el) => el.name + " | ")}
-                  <h4 className={s.vegetarian}>
+                  {details.diets && details.diets.map((el) => el.name +  " | ")}
+                  {/* <h4 className={s.vegetarian}> */}
                     {details.vegetarian === true ? "Vegetarian" : " "}
-                  </h4>
+                  {/* </h4> */}
                 </h3>
               </div>
 

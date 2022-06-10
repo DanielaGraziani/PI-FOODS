@@ -62,13 +62,16 @@
 .type {
   margin-top: -330px;
   margin-left: 550px;
+  display: flex;
 }
 
 .typeItems {
+  margin-left:70px;
   text-transform: capitalize;
   text-align: center;
   color: #4a148c;
   letter-spacing: 1.5px;
+  flex-wrap: wrap;
 }
 
 .vegetarian {
@@ -79,7 +82,8 @@
 
 .typeTitle {
   color: #4a148c;
-  margin-bottom: 20px;
+  justify-items: center;
+  /* margin-bottom: 20px; */
 }
 
 .logoVeggie {
