@@ -98,11 +98,18 @@ export default function CreateForm() {
     );
   };
 
-  // const handleAddDiet=(e)=>{
-  //   setForm({
-  //     ..
-  //   })
-  // }
+  const handleCreateDiet=(e)=>{
+    setForm({
+      ...form,
+        diets: [e.target.value]
+    })
+    setErrorsForm(
+      validateForm({
+        ...form,
+        diets: [e.target.value]
+      })
+    )
+  }
 
   const handleDelete = (e) => {
     setForm({
@@ -136,6 +143,7 @@ export default function CreateForm() {
       });
     }
   };
+  
   console.log(form.diets);
 
   return (
@@ -196,15 +204,20 @@ export default function CreateForm() {
           )}
         </div>
 
-        {/* <div>
+
+        <div>
+          <p>Create Diet</p>
           <input
             type="text"
             name='diets'
             placeholder="insert your own diet"
             // value={form.diets}
-            onChange={(e) => handleSelectRecipes(e)}
+            onChange={(e) => handleCreateDiet(e)}
             />
-        </div> */}
+        </div>
+
+
+
 
         <div>
           <p className={s.pTitle}>Instructions *</p>
