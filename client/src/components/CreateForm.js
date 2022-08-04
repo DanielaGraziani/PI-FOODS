@@ -206,20 +206,6 @@ export default function CreateForm() {
 
 
         <div>
-          <p>Create Diet</p>
-          <input
-            type="text"
-            name='diets'
-            placeholder="insert your own diet"
-            // value={form.diets}
-            onChange={(e) => handleCreateDiet(e)}
-            />
-        </div>
-
-
-
-
-        <div>
           <p className={s.pTitle}>Instructions *</p>
           <textarea
             type="text"
@@ -236,6 +222,17 @@ export default function CreateForm() {
           ) : (
             false
           )}
+        </div>
+
+        <div>
+          <p className={s.pTitle}>Create Diet</p>
+          <input
+            type="text"
+            name='diets'
+            className={s.input}
+            // placeholder="insert your own diet"
+            onChange={(e) => handleCreateDiet(e)}
+            />
         </div>
 
         <div>
@@ -260,7 +257,7 @@ export default function CreateForm() {
           {errorsForm.diets ? <h6>{errorsForm.diets}</h6> : false}
         </div>
 
-        <div className={s.selectCountry}>
+        <div className={s.selectDiet}>
           {form.diets.map((diet) => (
             <div>
               <input
@@ -285,14 +282,14 @@ export default function CreateForm() {
             disabled={Object.keys(errorsForm).length === 0 ? false : true}
           >SEND
           </button>
+      <div>
+        <Link to="/recipes">
+          <button className={s.buttonGo}>Go Back</button>
+        </Link>
+      </div>
         </div>
       </form>
 
-      <div>
-        <Link to="/recipes">
-          <button className={s.button}>Go Back</button>
-        </Link>
-      </div>
     </div>
   );
 }
