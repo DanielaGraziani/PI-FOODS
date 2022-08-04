@@ -1,45 +1,54 @@
-.container {
-  border: 12px solid rgb(169, 149, 202);
+.container{
+  border: 12px solid rgb(169, 149, 202)
 }
 
-.title {
+
+
+.title{
   margin-top: 40px;
-  font-size: 2rem;
-  color: #4a148c;
+  font-size: 2rem;  
+  color: #4A148C;
   text-align: center;
-  font-weight: bold;
+  font-weight: bold;  
 }
 
-.img {
+
+
+.img{
   margin-top: 80px;
-  width: 500px;
+  width:500px;
   border: 5px solid rgb(149, 117, 205);
   margin-right: 600px;
 }
 
-.upContainer {
+
+.upContainer{
   display: flex;
-  justify-items: center;
+  justify-items:center;
   margin-top: 50px;
   margin-left: 250px;
   margin-bottom: 30px;
 }
 
-.scoreContainer {
+.scoreContainer{
   background-color: white;
   border-radius: 10px;
   width: 100px;
   height: 60px;
   margin-left: 520px;
   border: 2px solid rgb(149, 117, 205);
-  color: #4a148c;
+  color: #4A148C;
+  
+  
 }
 
-.score {
+.score{
   margin: 5px;
+
 }
 
-.dish {
+
+.dish{
   background-color: white;
   border-radius: 10px;
   margin-left: 100px;
@@ -47,71 +56,72 @@
   min-height: 60px;
   /* height: 60px; */
   border: 2px solid rgb(149, 117, 205);
-  color: #4a148c;
+  color: #4A148C; 
 }
 
-.dishTitle {
+.dishTitle{
   margin: 5px;
   text-transform: capitalize;
 }
 
-.dishT {
+.dishT{
   text-transform: capitalize;
 }
 
-.type {
-  margin-top: -330px;
-  margin-left: 550px;
-  display: flex;
+.type{
+margin-top: -330px;
+margin-left: 550px;
 }
 
-.typeItems {
-  margin-left:70px;
+.typeItems{
   text-transform: capitalize;
   text-align: center;
-  color: #4a148c;
+  color: #4A148C;
   letter-spacing: 1.5px;
-  flex-wrap: wrap;
 }
 
-.vegetarian {
+.vegetarian{
   margin-top: 5px;
   letter-spacing: 1.5px;
   justify-content: center;
+
 }
 
-.typeTitle {
-  color: #4a148c;
-  justify-items: center;
-  /* margin-bottom: 20px; */
+
+.typeTitle{
+  color: #4A148C;
+  margin-bottom: 20px;
+
 }
 
-.logoVeggie {
-  margin-left: 550px;
-  margin-top: -80px;
+.logoVeggie{
+margin-left: 550px;
+margin-top: -80px;
 }
 
-.summaryContainer {
+.summaryContainer{
   /* margin-top: 10px; */
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 30px;
   padding-bottom: 30px;
+ 
+
 }
 
-.summaryText {
+.summaryText{
   text-align: justify;
   color: #212121;
 }
 
-.summaryTitle {
-  text-decoration: underline;
+.summaryTitle{
+  text-decoration:underline;
   margin-bottom: 10px;
   font-weight: bold;
-  color: #4a148c;
+  color: #4A148C;
 }
 
-.brocco {
+.brocco{
   margin-top: -250px;
   margin-right: 900px;
   position: relative;
@@ -119,7 +129,7 @@
   opacity: 0.6;
 }
 
-.pencil {
+.pencil{
   margin-top: -350px;
   margin-left: 1000px;
   position: relative;
@@ -127,30 +137,36 @@
   opacity: 0.5;
 }
 
-.stepContainer {
+.stepContainer{
   margin-top: -80px;
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 30px;
   padding-bottom: 30px;
   text-align: justify;
-  justify-content: center;
+  justify-content:center;
+
 }
 
-.stepTitle {
-  margin-bottom: 10px;
-  text-decoration: underline;
-  color: #4a148c;
-  font-weight: bold;
+.stepTitle{
+ margin-bottom: 10px;
+ text-decoration: underline;
+ color: #4A148C;
+ font-weight: bold;
+ 
+ 
 }
 
-.stepItem {
-  list-style: none;
+
+.stepItem{
+  list-style:none;
   margin-bottom: 20px;
   color: #212121;
+
+  
 }
 
-.button {
+.button{
   margin-left: 40px;
   /* margin-top: 10px; */
   margin-bottom: 40px;
@@ -167,7 +183,7 @@
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-}
+} 
 
 .button:hover {
   background-color: #9061ffff;
@@ -180,17 +196,18 @@
   transform: translateY(-1px);
 }
 
-.spinnerContainer {
+.spinnerContainer{
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
-}
 
-.delete {
+  }
+
+.delete{
   position: absolute;
   color: white;
-  background-color: #ff8a65;
+  background-color: #FF8A65;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
@@ -209,3 +226,4 @@
   color: #fff;
   transform: translateY(-2px);
 }
+
