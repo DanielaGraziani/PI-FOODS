@@ -89,6 +89,8 @@ router.get("/:id", async (req, res, next) => {
         healthScore: data.healthScore,
         dishTypes: data.dishTypes.map((dt) => { return { name: dt } }),
         steps: data.analyzedInstructions,
+        readyInMinutes: data.readyInMinutes,
+        servings: data.servings,
         diets: data.diets.map((diet) => {
           return { name: diet };
         }),
