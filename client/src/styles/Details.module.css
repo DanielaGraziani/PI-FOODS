@@ -1,5 +1,5 @@
 /* --------------------------------- general -------------------------------- */
-.container{ 
+.container {
   width: 70vw;
   margin-left: auto;
   margin-right: auto;
@@ -16,29 +16,27 @@
   animation: fade-in 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
 
-
 /* ---------------------------------- title --------------------------------- */
-.title{
+.title {
   margin-top: 40px;
-  font-size: 1.5rem;  
-  color: #4A148C;
+  font-size: 2rem;
+  color: #4a148c;
   text-align: center;
+  font-family: Italiana;
 }
 
-
 /* ------------------------------ image recipe ------------------------------ */
-.img{
+.img {
   margin-top: 24px;
   position: relative;
   height: 60%;
   width: 60%;
   border-radius: 15px;
-  border: 4px solid rgb(149, 117, 205);
+  border: 8px solid rgb(149, 117, 205);
 }
 
-
 /* ------------------------ types of diets container ------------------------ */
-.type{
+.type {
   margin: 0;
   display: flex;
   justify-content: center;
@@ -48,70 +46,72 @@
   align-items: center;
 }
 
-.typeItems{
-  
+.typeItems {
   margin-top: 20px;
   text-transform: capitalize;
   text-align: center;
-  /* color: #4A148C; */
   color: white;
   letter-spacing: 0.5px;
   margin: 0.5rem;
   font-size: 1.2rem;
-    padding: 0.5rem;
-    border: solid 1px transparent;
-    border-radius: 0.8rem;
-    background-color: #FF8A65;
+  padding: 0.5rem;
+  border: solid 1px transparent;
+  border-radius: 0.8rem;
+  background-color: #ff8a65;
 }
 
-.scoreContainer{
-display: flex;
-flex-direction: row;
-margin-left: 39%;
-margin-top: 10px
+.scoreContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 20px;
+  margin-right: -4rem;
+  color: #494848;
 }
 
-.healthScore{
+.healthScore {
   margin-right: 3rem;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
-.clock{
+.clock {
   margin-right: 3rem;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
-.person{
+.person {
   margin-right: 3rem;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
-.score{
+.score {
   font-size: 1.7rem;
 }
 /* --------------------------------- summary -------------------------------- */
-.summaryContainer{
+.summaryContainer {
   margin-top: 26px;
   padding-left: 100px;
   padding-right: 100px;
-  padding-top: 10px;
-  padding-bottom: 30px; 
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-.summaryText{
+.summaryText {
   text-align: justify;
   color: #494848;
   font-size: 1.5rem;
   font-weight: 400;
 }
 
-.summaryTitle{
+.summaryTitle {
+  font-size: 2rem;
   margin-bottom: 10px;
   font-weight: 500;
-  color: #4A148C;
+  color: #4a148c;
 }
 
-.brocco{
+.brocco {
   margin-top: -250px;
   margin-right: 900px;
   position: relative;
@@ -119,7 +119,7 @@ margin-top: 10px
   opacity: 0.6;
 }
 
-.pencil{
+.pencil {
   margin-top: -350px;
   margin-left: 1000px;
   position: relative;
@@ -127,34 +127,33 @@ margin-top: 10px
   opacity: 0.5;
 }
 
-.stepContainer{
+.stepContainer {
   margin-top: -80px;
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 30px;
   padding-bottom: 30px;
   text-align: justify;
-  justify-content:center;
+  justify-content: center;
+}
+
+.stepTitle {
+  margin-bottom: 10px;
+  color: #4a148c;
+  font-weight: 500;
+  font-size: 2rem;
 
 }
 
-.stepTitle{
- margin-bottom: 10px;
- color: #4A148C;
- font-weight: 500;
-}
-
-
-.stepItem{
-  list-style:none;
+.stepItem {
+  list-style: none;
   margin-bottom: 20px;
   color: #212121;
-  font-weight: 400; 
+  font-weight: 400;
   font-size: 1.5rem;
-
 }
 
-.button{
+.button {
   margin-left: 40px;
   /* margin-top: 10px; */
   margin-bottom: 40px;
@@ -171,7 +170,7 @@ margin-top: 10px
   transition: all 0.3s ease 0s;
   cursor: pointer;
   outline: none;
-} 
+}
 
 .button:hover {
   background-color: #9061ffff;
@@ -184,16 +183,16 @@ margin-top: 10px
   transform: translateY(-1px);
 }
 
-.spinnerContainer{
+.spinnerContainer {
   margin: 0;
   position: relative;
   left: 50%;
-  }
+}
 
-.delete{
+.delete {
   position: absolute;
   color: white;
-  background-color: #FF8A65;
+  background-color: #ff8a65;
   font-size: 1rem;
   font-weight: bold;
   text-align: center;
@@ -212,4 +211,3 @@ margin-top: 10px
   color: #fff;
   transform: translateY(-2px);
 }
-

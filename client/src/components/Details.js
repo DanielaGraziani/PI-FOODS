@@ -6,9 +6,13 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import defaultImg from "../utils/image-not-found.png";
 import Loader from "./Loader";
 import s from "../styles/Details.module.css";
-import logoVeggie from "../utils/veggie.png";
 import brocco from "../utils/piece-of-broccoli.png";
 import pencil from "../utils/spatula-and-whisk-in-pot.png";
+import {
+  BsFillStarFill,
+  BsFillClockFill,
+  BsFillPeopleFill,
+} from "react-icons/bs";
 
 export default function Details() {
   const dispatch = useDispatch();
@@ -43,8 +47,10 @@ export default function Details() {
             <Loader />
           </div>
         ) : (
+        <div>
           <div className={s.title}>
             <h2>{details?.title}</h2>
+            </div>
 
             <div>
               <div className={s.imageContainer}>
@@ -59,14 +65,20 @@ export default function Details() {
               </div>
 
               <div className={s.scoreContainer}>
-                <div className={s.healthScore}>⭐{details?.healthScore}</div>
+
+                <div className={s.healthScore}>
+                  <BsFillStarFill /> {details?.healthScore}
+                </div>
+
                 <div className={s.clock}>
-                  ⏰{details.readyInMinutes} <span className={s.min}>Min</span>
+                  <BsFillClockFill /> {details.readyInMinutes}{" "}
+                  <span className={s.min}>min</span>
                 </div>
+
                 <div className={s.person}>
-                  🍽️{details.servings}{" "}
-                  <span className={s.servings}>Servings</span>
+                  <BsFillPeopleFill /> {details.servings}
                 </div>
+                
               </div>
             </div>
 
