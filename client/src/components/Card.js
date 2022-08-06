@@ -12,7 +12,7 @@ export default function Card({ title, diets, image}) {
         </section>
 
         <div className={s.title}>
-          <h4>{title.toUpperCase()}</h4>
+          <h4>{title}</h4>
         </div>
 
         <div className={s.diets}>

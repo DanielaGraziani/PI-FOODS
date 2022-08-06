@@ -24,8 +24,12 @@
 
 .title{
   margin-top: 10px;
-  line-height: bolder;
+  line-height: bold;
   color: #F4511E;
+  font-family: Italiana;
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-transform: capitalize;
 }
 
 .diets{
