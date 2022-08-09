@@ -12,7 +12,9 @@ import {
   BsFillStarFill,
   BsFillClockFill,
   BsFillPeopleFill,
+  BsFillTrashFill,
 } from "react-icons/bs";
+import Swal from "sweetalert2";
 
 export default function Details() {
   const dispatch = useDispatch();
@@ -29,6 +31,13 @@ export default function Details() {
 
   const handleDelete = () => {
     dispatch(deleteRecipe(id));
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: 'Your recipe has been deleted',
+      showConfirmButton: false,
+      timer: 4000
+    })
     navigate("/recipes");
   };
 
@@ -39,7 +48,10 @@ export default function Details() {
       <div className={s.container}>
         {typeof details.id === "string" && (
           <button onClick={handleDelete}>
-            <span>❌</span>
+            <div className={s.delete}>
+              <BsFillTrashFill />
+              <h6>Delete</h6>
+            </div>
           </button>
         )}
         {details && details.length <= 0 ? (
@@ -47,14 +59,23 @@ export default function Details() {
             <Loader />
           </div>
         ) : (
-        <div>
-          <div className={s.title}>
-            <h2>{details?.title}</h2>
+          <div>
+            <div className={s.title}>
+              <h2>{details?.title}</h2>
             </div>
 
             <div>
               <div className={s.imageContainer}>
-                <img src={details.image} className={s.img} alt="not found" />
+                {details.image ? (
+                  <img src={details.image} className={s.img} alt="not found" />
+                ) : (
+                  <img
+                    src={defaultImg}
+                    className={s.img}
+                    height="350px"
+                    alt="default"
+                  />
+                )}
               </div>
 
               <div className={s.type}>
@@ -65,7 +86,6 @@ export default function Details() {
               </div>
 
               <div className={s.scoreContainer}>
-
                 <div className={s.healthScore}>
                   <BsFillStarFill /> {details?.healthScore}
                 </div>
@@ -78,7 +98,6 @@ export default function Details() {
                 <div className={s.person}>
                   <BsFillPeopleFill /> {details.servings}
                 </div>
-                
               </div>
             </div>
 
@@ -91,10 +110,11 @@ export default function Details() {
             </div>
 
             <img className={s.brocco} src={brocco} alt="broccoli" />
+
             <div className={s.stepContainer}>
               <h3 className={s.stepTitle}>Steps:</h3>
               <ul>
-                <h4>
+                <p className={s.stepTitleContainer}>
                   {Array.isArray(details?.steps)
                     ? details.steps.map((e) =>
                         e.steps.map((f) => (
@@ -104,7 +124,7 @@ export default function Details() {
                         ))
                       )
                     : details?.steps}
-                </h4>
+                </p>
               </ul>
             </div>
 

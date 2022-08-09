@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { postRecipe, getTypesOfDiets } from "../actions";
 import { Link } from "react-router-dom";
 import s from "../styles/CreateForm.module.css";
+import Swal from "sweetalert2";
 
 const validateForm = (form) => {
   let errors = {};
@@ -63,6 +64,8 @@ export default function CreateForm() {
     summary: "",
     healthScore: "",
     steps: "",
+    readyInMinutes: "",
+    servings: "",
     diets: [],
   });
 
@@ -132,7 +135,13 @@ export default function CreateForm() {
     } else {
       e.preventDefault();
       dispatch(postRecipe(form));
-      alert("Your recipe has been created succesfully");
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your recipe has been created succesfully',
+        showConfirmButton: false,
+        timer: 4000
+      })
       navigate("/recipes");
       setForm({
         title: "",
@@ -144,7 +153,7 @@ export default function CreateForm() {
     }
   };
   
-  console.log(form.diets);
+  
 
   return (
     <div className={s.container}>
@@ -154,7 +163,7 @@ export default function CreateForm() {
         </div>
 
         <div>
-          <p className={s.pTitle}>Title *</p>
+          <p className={s.pTitle}>Title <span className={s.sign}>*</span></p>
           <input
             type="text"
             name="title"
@@ -170,24 +179,9 @@ export default function CreateForm() {
           )}
         </div>
 
-        <div>
-          <p className={s.pTitle}>Summary *</p>
-          <input
-            className={s.input}
-            type="text"
-            name="summary"
-            value={form.summary}
-            onChange={(e) => handleChange(e)}
-          />
-          {errorsForm.summary ? (
-            <h6 className={s.error}>{errorsForm.summary}</h6>
-          ) : (
-            false
-          )}
-        </div>
 
         <div>
-          <p className={s.pTitle}>Score *</p>
+          <p className={s.pTitle}>Score <span className={s.sign}>*</span></p>
           <input
             type="number"
             name="healthScore"
@@ -204,16 +198,68 @@ export default function CreateForm() {
           )}
         </div>
 
+          <div>
+          <p className={s.pTitle}>preparation time</p>
+          <input
+            type="number"
+            name="readyInMinutes"
+            min={1}
+            max={100}
+            className={s.input}
+            value={form.readyInMinutes}
+            onChange={(e) => handleChange(e)}
+          />
+          {errorsForm.readyInMinutes ? (
+            <h6 className={s.error}>{errorsForm.readyInMinutes}</h6>
+          ) : (
+            false
+          )}
+        </div>
 
         <div>
-          <p className={s.pTitle}>Instructions *</p>
+          <p className={s.pTitle}>Servings</p>
+          <input
+            type="number"
+            name="servings"
+            min={1}
+            max={15}
+            className={s.input}
+            value={form.servings}
+            onChange={(e) => handleChange(e)}
+          />
+          {errorsForm.servings ? (
+            <h6 className={s.error}>{errorsForm.servings}</h6>
+          ) : (
+            false
+          )}
+        </div>
+
+        <div>
+          <p className={s.pTitle}>Summary <span className={s.sign}>*</span></p>
+          <input
+            className={s.input}
+            type="text"
+            name="summary"
+            value={form.summary}
+            onChange={(e) => handleChange(e)}
+          />
+          {errorsForm.summary ? (
+            <h6 className={s.error}>{errorsForm.summary}</h6>
+          ) : (
+            false
+          )}
+        </div>
+
+
+        <div>
+          <p className={s.pTitle}>Instructions <span className={s.sign}>*</span></p>
           <textarea
             type="text"
             name="steps"
             value={form.steps}
             cols="30"
             rows="10"
-            className={s.inputText}
+            className={s.inputSteps}
             onChange={(e) => handleChange(e)}
           />
 
@@ -236,7 +282,7 @@ export default function CreateForm() {
         </div>
 
         <div>
-          <p className={s.pTitle}>Type of diets * </p>
+          <p className={s.pTitle}>Type of diets <span className={s.sign}>*</span> </p>
 
           <select
             className={s.sForm}
@@ -268,13 +314,13 @@ export default function CreateForm() {
                 // onBlur={handleBlur}
                 onClick={() => handleDelete(diet)}
               />
-              <p>{diet}</p>
+              <p className={s.dietTitle}>{diet}</p>
             </div>
           ))}
           {/* {errorsForm.diets ? <h6>{errorsForm.diets}</h6> : false} */}
         </div>
 
-        <div>
+        <div className={s.selectContainer}>
           <button
             className={s.buttonSend}
             type="submit"

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRecipeByName } from "../actions";
 import s from "../styles/SearchBar.module.css";
 import Empty from "../components/Empty";
+import Swal from "sweetalert2";
 
 export default function SearchBar({ setCurrentPage }) {
   const [input, setInput] = useState("");
@@ -17,7 +18,14 @@ export default function SearchBar({ setCurrentPage }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!input || input === " " || !input.trim().length) {
-      alert("Sending invalid or null field");
+      Swal.fire({
+        position: 'center',
+        icon: 'warning',
+        title: 'Sending invalid or null field',
+        showConfirmButton: false,
+        timer: 2500
+      })
+      // alert("Sending invalid or null field");
     } else if (input || input.trim().length) {
       dispatch(getRecipeByName(input));
       setInput("");
