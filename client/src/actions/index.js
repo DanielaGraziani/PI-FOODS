@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from "sweetalert2";
 
 import {
   GET_ALL_RECIPES_HOME,
@@ -37,7 +38,15 @@ export const getRecipeByID = (id) => (dispatch) => {
       });
     })
     .catch((error) => {
-      alert("ID not found");
+      //alert("ID not found");
+      Swal.fire({
+        icon: "error",
+        title: "Id not found!",
+        showConfirmButton: false,
+        html: `<a href="/recipes"> Click here to return to home</a>`,
+      });
+
+      
     });
 };
 
@@ -51,7 +60,14 @@ export const getRecipeByName = (name) => (dispatch) => {
       });
     })
     .catch((error) => {
-      alert("This recipes is not found");
+      // alert("This recipes is not found");
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'This recipes is not found',
+        showConfirmButton: false,
+        timer: 2000
+      })
     });
 };
 
