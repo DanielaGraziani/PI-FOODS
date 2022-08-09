@@ -4,13 +4,15 @@ const { Recipe, Diet } = require("../db"); //importo los modelos
 
 router.post("/", async (req, res, next) => {
   try {
-    let { title, summary, healthScore, steps, diets } = req.body;
+    let { title, summary, healthScore, steps, readyInMinutes, servings, diets } = req.body;
 
     let recipeCreate = await Recipe.create({
       title,
       summary,
       healthScore,
       steps,
+      readyInMinutes,
+      servings,
     });
 
     for (let i = 0; i < diets.length; i++) {

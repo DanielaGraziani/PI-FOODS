@@ -26,6 +26,14 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    readyInMinutes: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
+    servings: {
+      type: DataTypes.FLOAT,
+      allowNull: true,
+    },
     createInDB: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

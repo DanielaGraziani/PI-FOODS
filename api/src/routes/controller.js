@@ -7,7 +7,7 @@ const getDataFromApi = async () => {
   const apiAllData = await axios.get(
     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
   );
-
+  
   const apiMapResult = await apiAllData.data.results.map((api) => {
     return {
       vegetarian: api.vegetarian,
@@ -17,6 +17,8 @@ const getDataFromApi = async () => {
       healthScore: api.healthScore,
       steps: api.analyzedInstructions,
       image: api.image, 
+      readyInMinutes: api.readyInMinutes,
+      servings: api.servings,
       // dishTypes: api.dishTypes.map((dishtypes) => { 
       // return { name: dishtypes };
       //  }),
