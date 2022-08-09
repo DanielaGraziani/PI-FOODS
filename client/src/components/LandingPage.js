@@ -5,10 +5,12 @@ import s from '../styles/Landing.module.css'
 export default function LandingPage() {
   return (
     <div className={s.landingContainer}>
-        <h1 className={s.landingTitle}>Recipe's Ideas</h1>
+      <div className={s.textContainer}>
+        <h2 className={s.landingTitle}>Welcome to</h2>
         <div className={s.text}>
-            <p>Welcome!</p>
+            <h1>Recipe Ideas!</h1>
         </div>
+      </div>
 
     <div className={s.buttonContainer}>
     <Link to= '/recipes'>
