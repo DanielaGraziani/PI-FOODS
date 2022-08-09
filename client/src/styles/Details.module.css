@@ -135,14 +135,16 @@
   padding-bottom: 30px;
   text-align: justify;
   justify-content: center;
+  
 }
+
 
 .stepTitle {
   margin-bottom: 10px;
   color: #4a148c;
   font-weight: 500;
   font-size: 2rem;
-
+  
 }
 
 .stepItem {
@@ -150,6 +152,11 @@
   margin-bottom: 20px;
   color: #212121;
   font-weight: 400;
+  font-size: 1.5rem;
+  
+}
+
+.stepTitleContainer{
   font-size: 1.5rem;
 }
 
@@ -191,16 +198,16 @@
 
 .delete {
   position: absolute;
-  color: white;
-  background-color: #ff8a65;
-  font-size: 1rem;
+  color: #494848;
+  /* background-color: #ff8a65; */
+  font-size: 2rem;
   font-weight: bold;
   text-align: center;
   padding: 10px 25px;
-  margin: 12px 578px;
+  margin: 12px 478px;
   width: 75px;
   /* border-radius: 5px; */
-  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
   cursor: pointer;
   border: none;
 }
